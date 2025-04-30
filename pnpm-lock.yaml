@@ -84,8 +84,8 @@ importers:
         specifier: ^5.72.1
         version: 5.72.1(@tanstack/react-query@5.72.1(react@19.0.0))(react@19.0.0)
       '@tiptap/extension-highlight':
-        specifier: ^2.11.7
-        version: 2.11.7(@tiptap/core@2.11.7(@tiptap/pm@2.11.7))
+        specifier: ^2.11.9
+        version: 2.11.9(@tiptap/core@2.11.7(@tiptap/pm@2.11.7))
       '@tiptap/extension-image':
         specifier: ^2.11.7
         version: 2.11.7(@tiptap/core@2.11.7(@tiptap/pm@2.11.7))
@@ -1890,8 +1890,8 @@ packages:
     peerDependencies:
       '@tiptap/core': ^2.7.0
 
-  '@tiptap/extension-highlight@2.11.7':
-    resolution: {integrity: sha512-c/NH4kIpNOWCUQv8RkFNDyOcgt+2pYFpDf0QBJmzhAuv4BIeS2bDmDtuNS7VgoWRZH+xxCNXfvm2BG+kjtipEg==}
+  '@tiptap/extension-highlight@2.11.9':
+    resolution: {integrity: sha512-HWGU46hk8vozcptZcsc53GZnS2//snyhq+rwqY7WIQrbA8P0q/ImjgHRFMyfQcAK412sJbq9vkGzIRQvVOqdJA==}
     peerDependencies:
       '@tiptap/core': ^2.7.0
 
@@ -2056,6 +2056,9 @@ packages:
 
   '@types/node@20.17.27':
     resolution: {integrity: sha512-U58sbKhDrthHlxHRJw7ZLiLDZGmAUOZUbpw0S6nL27sYUdhvgBLCRu/keSd6qcTsfArd1sRFCCBxzWATGr/0UA==}
+
+  '@types/node@20.17.32':
+    resolution: {integrity: sha512-zeMXFn8zQ+UkjK4ws0RiOC9EWByyW1CcVmLe+2rQocXRsGEDxUCwPEIVgpsGcLHS/P8JkT0oa3839BRABS0oPw==}
 
   '@types/react-dom@19.0.4':
     resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
@@ -4967,7 +4970,7 @@ snapshots:
     dependencies:
       '@tiptap/core': 2.11.7(@tiptap/pm@2.11.7)
 
-  '@tiptap/extension-highlight@2.11.7(@tiptap/core@2.11.7(@tiptap/pm@2.11.7))':
+  '@tiptap/extension-highlight@2.11.9(@tiptap/core@2.11.7(@tiptap/pm@2.11.7))':
     dependencies:
       '@tiptap/core': 2.11.7(@tiptap/pm@2.11.7)
 
@@ -5161,6 +5164,10 @@ snapshots:
   '@types/negotiator@0.6.3': {}
 
   '@types/node@20.17.27':
+    dependencies:
+      undici-types: 6.19.8
+
+  '@types/node@20.17.32':
     dependencies:
       undici-types: 6.19.8
 
@@ -5872,7 +5879,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 20.17.27
+      '@types/node': 20.17.32
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
