@@ -1,0 +1,16 @@
+name: Labels Enforcement
+
+on:
+  pull_request:
+    types: [labeled, unlabeled, opened, edited, synchronize]
+
+jobs:
+  enforce-label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: yogevbd/enforce-label-action@2.2.2
+        with:
+          REQUIRED_LABELS_ANY: "approved,blocked,breaking-change,bug,changes-requested,chore,ci-failing,ci-passing,dependencies,documentation,experimental,feature,high-priority,hotfix,javascript,low-priority,medium-priority,needs-review,needs-tests,performance,production,qa-approved,refactor,reviewed,security,staging,tests,wip,config,feature"
+          REQUIRED_LABELS_ANY_DESCRIPTION: "Select at least one label"
+          BANNED_LABELS: "bug"
+          BANNED_LABELS_DESCRIPTION: "The 'bug' label should only be used on issues"

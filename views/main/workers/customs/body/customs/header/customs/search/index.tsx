@@ -1,0 +1,109 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
+import { Info, Search, X } from "lucide-react";
+import { type ChangeEvent, type FocusEvent, useRef, useState } from "react";
+
+interface ISearchBarProps {
+	placeholder?: string;
+	onSearch?: (value: string) => void;
+	className?: string;
+}
+
+const SearchBar = ({
+	placeholder = "Search...",
+	onSearch,
+	className = "",
+}: ISearchBarProps) => {
+	const [isActive, setIsActive] = useState<boolean>(false);
+	const inputRef = useRef<HTMLInputElement>(null);
+
+	const handleFocus = (): void => {
+		setIsActive(true);
+	};
+
+	const handleBlur = (e: FocusEvent<HTMLInputElement>): void => {
+		// Only set to inactive if there's no value
+		if (!e.target.value) {
+			setIsActive(false);
+		}
+	};
+
+	const handleClear = (): void => {
+		if (inputRef.current) {
+			inputRef.current.value = "";
+			inputRef.current.focus();
+			if (onSearch) {
+				onSearch("");
+			}
+		}
+	};
+
+	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+		if (onSearch) {
+			onSearch(e.target.value);
+		}
+	};
+
+	return (
+		<div
+			className={`
+        relative
+        ${isActive ? "w-94" : " w-10"}
+        transition-all duration-300 ease-in-out
+      `}
+		>
+			<Input
+				className={cn(isActive ? "pr-8 pl-9" : "pl-7")}
+				ref={inputRef}
+				type="text"
+				placeholder={placeholder}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				onChange={handleChange}
+			/>
+			<Search
+				size={25}
+				strokeWidth={1.5}
+				className="absolute left-2 top-1.5 text-zinc-500 cursor-pointer hover:bg-muted-foreground/10 rounded-sm p-1"
+				onClick={() => {
+					setIsActive(true);
+					if (inputRef) {
+						inputRef?.current?.focus();
+					}
+				}}
+			/>
+			{isActive && (
+				<div className="absolute right-8 top-1.5">
+					<Tooltip>
+						<TooltipTrigger>
+							<Info
+								size={25}
+								strokeWidth={1.5}
+								className=" text-zinc-500 cursor-pointer hover:bg-muted-foreground/10 rounded-sm p-1"
+							/>
+						</TooltipTrigger>
+						<TooltipContent side="bottom" className="mt-2">
+							You can search workers based on their name, phone number, EID
+						</TooltipContent>
+					</Tooltip>
+				</div>
+			)}
+			{isActive && (
+				<X
+					size={25}
+					strokeWidth={1.5}
+					className="absolute right-2 top-1.5 text-zinc-500 cursor-pointer hover:bg-muted-foreground/10 rounded-sm p-1"
+					onClick={handleClear}
+				/>
+			)}
+		</div>
+	);
+};
+
+export default SearchBar;

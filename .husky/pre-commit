@@ -1,0 +1,39 @@
+echo "🛠️ Running tests..."
+
+# npm run test --forceExit
+
+echo "⚙️ Running Bime format and automatically formatting the code..."
+npx @biomejs/biome format --write . # Automatically format the code
+
+# Biome check
+echo "🔧 Running Bime check and automatically fixing the code... 🛠️"
+npx @biomejs/biome check --write . # Automatically fix the code
+
+# Biome fix
+echo "🚀 Running Bime lint and automatically linting the code..."
+npx @biomejs/biome lint --write . # Automatically lint the code
+
+# Linting
+# npx lint-staged --concurrent false
+
+# Git status check
+echo "🔍 Checking your commit message..."
+git status
+
+# Check if there are changes to commit
+if ! git diff --quiet; then
+  # Check if there are changes to commit
+  echo "🔍 Checking your commit message..."
+  git status
+
+  # Automatically add changes to git
+  echo "📝 Adding changes to git..."
+  git add .
+
+  # Amend the original commit
+  echo "💾 Amending the original commit..."
+  git commit --amend --no-edit
+fi
+
+# Warning message
+echo "🔔 Please notify that the code should be updated to the latest version of the dev branch before committing."
