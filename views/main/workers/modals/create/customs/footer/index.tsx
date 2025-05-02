@@ -7,10 +7,10 @@ import { CornerDownLeft } from "lucide-react";
 const Footer = () => {
 	const { setModal } = useWorkersModal();
 	return (
-		<DialogFooter className="overflow-visible p-1 mt-auto">
+		<DialogFooter className="overflow-visible p-1 mt-auto border-t z-10 bg-accent">
 			<div className="w-full flex items-center justify-between">
 				<div className="mr-auto" />
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 ">
 					<Button
 						size="sm"
 						variant="outline"
