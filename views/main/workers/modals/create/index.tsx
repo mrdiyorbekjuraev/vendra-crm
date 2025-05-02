@@ -145,7 +145,7 @@ export const CreateWorker = () => {
     lastName: "",
     phoneNumber: "",
     password: "",
-    confirmPassword: "",
+    // confirmPassword: "",
     birthDate: new Date(),
     gender: "MALE",
     address: "",
@@ -412,7 +412,7 @@ export const CreateWorker = () => {
                             </div>
                           )}
                         </FastField>
-                        <FastField name="confirmPassword">
+                        {/* <FastField>
                           {({ field, meta }: FieldProps) => (
                             <div className="grid w-full gap-2 relative">
                               <div className="flex items-center justify-between">
@@ -458,7 +458,7 @@ export const CreateWorker = () => {
                               />
                             </div>
                           )}
-                        </FastField>
+                        </FastField> */}
                       </div>
                       <div className="h-15 px-4 flex items-center sticky top-0 z-[2] border-b border-t bg-white-0 bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-md-opacity-10">
                         <Typography variant="h3">Branches and Roles</Typography>

@@ -8,6 +8,7 @@ type CurrentBranchState = {
   currentBranch: TBranch | null;
   setBranches: (branches: TBranch[]) => void;
   setCurrentBranch: (branch: TBranch | null) => void;
+  clearCurrentBranch: () => void; 
 };
 
 // Custom storage for cookies
@@ -18,11 +19,9 @@ const cookieStorage = {
   },
   setItem: (name: string, value: string): void => {
     Cookies.set(name, value, {
-      expires: 30, // 30 days
+      expires: 30,
       path: "/",
       sameSite: "strict",
-      // Uncomment in production
-      // secure: process.env.NODE_ENV === 'production'
     });
   },
   removeItem: (name: string): void => {
@@ -47,6 +46,11 @@ export const useCurrentBranch = create<CurrentBranchState>()(
 
       setCurrentBranch: (branch) => {
         set({ currentBranch: branch });
+      },
+
+      clearCurrentBranch: () => {
+        set({ currentBranch: null });
+        cookieStorage.removeItem("current-branch"); 
       },
     }),
     {

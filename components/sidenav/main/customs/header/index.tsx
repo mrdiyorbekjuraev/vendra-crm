@@ -37,6 +37,7 @@ import React, { useState, useCallback, useEffect, memo } from "react";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import Loading from "./loading";
 import { Protect } from "@/components/ui/protect";
+import { useCurrentBranch } from "@/stores/main/current-branch";
 
 type TMenuItems = {
   icon: LucideIcon;
@@ -54,7 +55,9 @@ const NavHeader = memo(() => {
   const {
     stores: { data: stores, isLoading },
   } = useStoreCache();
-  const { currentStore, setCurrentStore } = useCurrentStore();
+  const { currentStore, setCurrentStore, clearCurrentStore } =
+    useCurrentStore();
+  const { clearCurrentBranch } = useCurrentBranch();
   const { setModal } = useStoresModal();
 
   useEffect(() => {
@@ -100,6 +103,8 @@ const NavHeader = memo(() => {
       onClick: (router: AppRouterInstance) => {
         signOut();
         router.push("/sign-in");
+        clearCurrentStore();
+        clearCurrentBranch();
         sessionStorage.clear();
         localStorage.clear();
       },
@@ -183,7 +188,11 @@ const NavHeader = memo(() => {
                       {el?.name?.[0]}
                     </AvatarFallback>
                   </Avatar>
-                  <Protect resource="categories" actions={["update"]} fallback={<>Siz uchun yo'q</>}>
+                  <Protect
+                    resource="categories"
+                    actions={["update"]}
+                    fallback={<>Siz uchun yo'q</>}
+                  >
                     <span className="text-sm font-medium">{el?.name}</span>
                   </Protect>
                 </div>

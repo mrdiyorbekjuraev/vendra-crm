@@ -35,7 +35,7 @@ export const useOwnerFormFeatures = (): TOwnerFormFeatures => {
               value
             );
             setUserData({
-              phone: value.phoneNumber,
+              phone: value?.phoneNumber,
               isPhoneVerified: true,
             });
 
@@ -60,6 +60,7 @@ export const useOwnerFormFeatures = (): TOwnerFormFeatures => {
     },
   });
 
+
   const handleCodeCheck = useMutation<void, Error, any>({
     mutationFn: async (value) => {
       try {
@@ -76,7 +77,6 @@ export const useOwnerFormFeatures = (): TOwnerFormFeatures => {
               }
             );
             setUserData({
-              phone: value.phoneNumber,
               isPhoneVerified: true,
             });
 

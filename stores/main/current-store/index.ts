@@ -19,6 +19,7 @@ type CurrentStoreState = {
   currentStore: Store | null;
   setStores: (stores: Store[]) => void;
   setCurrentStore: (store: Store) => void;
+  clearCurrentStore: () => void;
 };
 
 // Custom storage for cookies
@@ -33,7 +34,7 @@ const cookieStorage = {
       path: "/",
       sameSite: "strict",
       // Uncomment in production
-    //   secure: process.env.NODE_ENV === 'production'
+      //   secure: process.env.NODE_ENV === 'production'
     });
   },
   removeItem: (name: string): void => {
@@ -58,6 +59,10 @@ export const useCurrentStore = create<CurrentStoreState>()(
 
       setCurrentStore: (store) => {
         set({ currentStore: store });
+      },
+      clearCurrentStore: () => {
+        set({ currentStore: null });
+        cookieStorage.removeItem("current-store"); // clear from cookies
       },
     }),
     {

@@ -25,6 +25,7 @@ import {
 	type TUserRegisterForm,
 	useUserProfileSetUpFeatures,
 } from "./features";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 
 // Animation variants
 const containerVariants = {
@@ -53,7 +54,7 @@ const UserProfileSetup = () => {
 	const { userData } = useUserStore();
 	const { handleUserRegister } = useUserProfileSetUpFeatures();
 	const fileInputRef = useRef<HTMLInputElement>(null);
-
+	console.log(userData);
 	const userForm = useFormik<TUserRegisterForm>({
 		initialValues: {
 			phoneNumber: userData?.phone || "",
