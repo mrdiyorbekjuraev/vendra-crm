@@ -5,7 +5,7 @@ export const workerSchema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   phoneNumber: z.string().min(7, "Phone number is too short"),
   password: z.string().min(6, "Password must be at least 8 characters"),
-  confirmPassword: z.string().min(6, "Password must be at least 8 characters"),
+  // confirmPassword: z.string().min(6, "Password must be at least 8 characters"),
   branches: z.array(
     z.object({
       branchId: z.string().min(1, "Branch ID is required"),
