@@ -254,23 +254,6 @@ const Content = () => {
 										</div>
 									)}
 								</FastField>
-								<FastField name="email">
-									{({ field, meta }: FieldProps) => (
-										<div className="grid w-full gap-2">
-											<Label htmlFor="email" className="block text-sm ">
-												Email
-											</Label>
-											<MainInput
-												id="email"
-												type="text"
-												placeholder="Enter your last email..."
-												{...field}
-												isInvalid={meta.touched && !!meta.error}
-												errorMessage={meta.touched ? meta.error : ""}
-											/>
-										</div>
-									)}
-								</FastField>
 							</div>
 							{dirty && (
 								<div className="grid grid-cols-1">

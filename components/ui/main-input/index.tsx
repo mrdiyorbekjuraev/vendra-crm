@@ -61,7 +61,7 @@ const MainInput = forwardRef<HTMLInputElement, MainInputProps>(
 
         <Input
           {...props}
-          type={show ? "password" : "text"}
+          type={show ? "password" : type}
           ref={ref}
           id={inputId}
           disabled={disabled}

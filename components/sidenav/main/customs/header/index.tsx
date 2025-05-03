@@ -38,6 +38,8 @@ import useSignOut from "react-auth-kit/hooks/useSignOut";
 import Loading from "./loading";
 import { Protect } from "@/components/ui/protect";
 import { useCurrentBranch } from "@/stores/main/current-branch";
+import { getInitials } from "@/utils/get-initial";
+import { GenericAvatar } from "@/components/ui/generic-avatar";
 
 type TMenuItems = {
   icon: LucideIcon;
@@ -146,18 +148,16 @@ const NavHeader = memo(() => {
             className="w-full h-12 px-4 outline-0 cursor-pointer data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <div className="text-sidebar-primary-foreground flex aspect-square size-7 items-center justify-center rounded-lg">
-                <Avatar className="w-7 h-7 rounded-md">
-                  <AvatarImage
-                    src={currentStore?.logoUrl}
-                    alt="User"
-                    className="rounded-none"
-                  />
-                  <AvatarFallback className="rounded-sm">
-                    {currentStore?.name?.[0]}
-                  </AvatarFallback>
-                </Avatar>
+                <GenericAvatar
+                  className="w-7 h-7 rounded-md"
+                  variant="warning"
+                  fallbackClassName="rounded-sm"
+                  fallbackText={getInitials(String(currentStore?.name), 1)}
+                  src={currentStore?.logoUrl}
+                  alt="Store profile picture"
+                />
               </div>
               <div className="flex gap-1 items-center flex-1 text-left text-sm leading-tight">
                 <span className="truncate tracking-[-0.02em] font-semibold leading-[20px] text-[16px]">

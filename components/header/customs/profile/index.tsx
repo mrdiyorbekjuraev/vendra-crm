@@ -112,7 +112,7 @@ export const ProfileDropdown = () => {
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
-					<DropdownMenuItem onClick={() => router?.push("/settings/account")}>
+					<DropdownMenuItem onClick={() => router?.push("/settings/account")} className="dark:hover:bg-zinc-500/10 cursor-pointer"> 
 						<User className="mr-2 h-4 w-4" />
 						<span>Profile</span>
 						<DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -122,7 +122,7 @@ export const ProfileDropdown = () => {
             <span>Billing</span>
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem> */}
-					<DropdownMenuItem onClick={() => router?.push("/settings/account")}>
+					<DropdownMenuItem onClick={() => router?.push("/settings/account")} className="dark:hover:bg-zinc-500/10 cursor-pointer">
 						<Settings className="mr-2 h-4 w-4" />
 						<span>Settings</span>
 						<DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -134,13 +134,13 @@ export const ProfileDropdown = () => {
             <UserPlus className="mr-2 h-4 w-4" />
             <span>Invite users</span>
           </DropdownMenuItem> */}
-					<DropdownMenuItem>
+					<DropdownMenuItem className="dark:hover:bg-zinc-500/10 cursor-pointer">
 						<Bell className="mr-2 h-4 w-4" />
 						<span>Notifications</span>
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem onClick={toggleTheme}>
+				<DropdownMenuItem onClick={toggleTheme} className="dark:hover:bg-zinc-500/10 cursor-pointer">
 					{isDarkMode ? (
 						<>
 							<Sun className="mr-2 h-4 w-4" />
@@ -153,12 +153,12 @@ export const ProfileDropdown = () => {
 						</>
 					)}
 				</DropdownMenuItem>
-				<DropdownMenuItem>
+				<DropdownMenuItem className="dark:hover:bg-zinc-500/10 cursor-pointer">
 					<HelpCircle className="mr-2 h-4 w-4" />
 					<span>Help</span>
 				</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem variant="destructive">
+				<DropdownMenuItem variant="destructive" className="dark:hover:bg-zinc-500/10 cursor-pointer">
 					<LogOut className="mr-2 h-4 w-4" />
 					<span>Log out</span>
 					<DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

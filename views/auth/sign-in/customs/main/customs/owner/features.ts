@@ -26,40 +26,37 @@ export const useOwnerFormFeatures = (): TOwnerFormFeatures => {
 
   const handlePhoneRegister = useMutation<void, Error, any>({
     mutationFn: async (value) => {
+      setIsPending(true);
+      toast.loading("Checking phone number...");
+
       try {
-        await toast.promise(
-          (async () => {
-            setIsPending(true);
-            const { data } = await httpClient.post<any>(
-              "auth/send-code",
-              value
-            );
-            setUserData({
-              phone: value?.phoneNumber,
-              isPhoneVerified: true,
-            });
+        const data = await httpClient.post<any>("auth/send-code", value);
 
-            if (!data?.success) {
-              setIsPending(false);
-              throw new Error("Backend responded with failure.");
-            }
+        setUserData({
+          phone: value?.phoneNumber,
+          isPhoneVerified: true,
+        });
 
-            setIsPending(false);
-          })(),
-          {
-            loading: "Checking phone number...",
-            success: `Code has been sent to ${userData?.phone}`,
-            error: "Failed to checking phone number",
-          }
-        );
+        if (!data?.success) {
+          throw new Error("Backend responded with failure.");
+        }
+
+        toast.dismiss();
+        toast.success(`Code has been sent to ${userData?.phone}`, {
+          classNames: {
+            icon: "text-green-500",
+          },
+        });
       } catch (err: any) {
+        toast.dismiss();
         toast.error(
           err?.message || "Unexpected error while checking phone number."
         );
+      } finally {
+        setIsPending(false);
       }
     },
   });
-
 
   const handleCodeCheck = useMutation<void, Error, any>({
     mutationFn: async (value) => {
@@ -108,6 +105,9 @@ export const useOwnerFormFeatures = (): TOwnerFormFeatures => {
             loading: "Code is being checked...",
             success: "Code passed successfully",
             error: "Failed to checking phone number or code",
+            classNames: {
+              icon: "text-green-500",
+            },
           }
         );
       } catch (err: any) {
@@ -117,6 +117,7 @@ export const useOwnerFormFeatures = (): TOwnerFormFeatures => {
       }
     },
   });
+
   const resendCode = useMutation<void, Error>({
     mutationFn: async () => {
       if (!userData.phone) return;
