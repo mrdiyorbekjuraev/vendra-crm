@@ -76,7 +76,7 @@ export function GenericAvatar({
 		success:
 			"bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100",
 		warning:
-			"bg-yellow-100 text-yellow-700 dark:bg-yellow-700 dark:text-yellow-100",
+			"bg-yellow-200 border border-yellow-300 dark:border-yellow-900 text-yellow-700 dark:bg-yellow-700 dark:text-yellow-100",
 		destructive: "bg-destructive text-destructive-foreground",
 	};
 

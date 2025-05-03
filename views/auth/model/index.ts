@@ -1,8 +1,14 @@
 import { z } from "zod";
 
 export const phoneSchema = z.object({
-	phoneNumber: z.string().trim(),
-});
+	phoneNumber: z
+	  .string()
+	  .trim()
+	  .regex(
+		/^\+998\d{9}$/,
+		'Phone number must be a valid  in the format +998XXXXXXXXX'
+	  ),
+  });
 
 export const codeSchema = z.object({
 	code: z
