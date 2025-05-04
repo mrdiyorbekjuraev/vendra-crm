@@ -38,7 +38,7 @@ const Content = () => {
 				{/* Light */}
 				<Card
 					className={cn(
-						"w-64 h-46 overflow-hidden border rounded-xl pt-0 gap-2 cursor-pointer",
+						"max-w-64 max-h-46 overflow-hidden border rounded-xl pt-0 gap-2 cursor-pointer",
 						theme === "light" && "border-blue-600",
 					)}
 					onClick={() => setTheme("light")}
@@ -66,7 +66,7 @@ const Content = () => {
 				{/* Dark */}
 				<Card
 					className={cn(
-						"w-64 h-46 overflow-hidden border rounded-xl pt-0 gap-2 cursor-pointer",
+						"max-w-64 max-h-46 overflow-hidden border rounded-xl pt-0 gap-2 cursor-pointer",
 						theme === "dark" && "border-blue-600",
 					)}
 					onClick={() => setTheme("dark")}
@@ -94,7 +94,7 @@ const Content = () => {
 				{/* System */}
 				<Card
 					className={cn(
-						"w-64 h-46 overflow-hidden border rounded-xl pt-0 gap-2 cursor-pointer",
+						"max-w-64 max-h-46 overflow-hidden border rounded-xl pt-0 gap-2 cursor-pointer",
 						theme === "system" && "border-blue-600",
 					)}
 					onClick={() => setTheme("system")}
@@ -127,11 +127,7 @@ const Content = () => {
 					</CardFooter>
 				</Card>
 			</div>
-			<Separator className="my-10" />
-			<div className="flex flex-col gap-2">
-				<Label>System Language</Label>
-				<LocaleSwitcher className="w-full" />
-			</div>
+	
 		</div>
 	);
 };
