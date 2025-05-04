@@ -30,7 +30,7 @@ export const useWorkersCache = (): TWorkersCache => {
 			search: getParam("search") || "",
 			storeId: currentStore?.id,
 			branchId: currentBranch?.id,
-			status: getParam("status") || "",
+			status: getParam("tab")?.toUpperCase() || "",
 			page: Number(getParam("page")) || 1,
 			limit: Number(getParam("limit")) || defaultPageSize,
 		}),

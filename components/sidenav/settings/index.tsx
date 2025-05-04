@@ -47,9 +47,7 @@ export function Settings({ ...props }: React.ComponentProps<typeof Sidebar>) {
 					</SidebarGroup>
 				))}
 			</SidebarContent>
-			<SidebarFooter>
-				<Branches />
-			</SidebarFooter>
+			
 		</Sidebar>
 	);
 }

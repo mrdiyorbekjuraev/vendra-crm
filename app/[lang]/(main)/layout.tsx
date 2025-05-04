@@ -70,9 +70,9 @@ export default async function RootLayout({
               <SidebarInset>{children}</SidebarInset>
             </SidebarProvider>
           </NextAuth>
+          <HelpSidePanel />
         </Providers>
         {/* Help Side Panel */}
-        <HelpSidePanel />
       </body>
     </html>
   );
